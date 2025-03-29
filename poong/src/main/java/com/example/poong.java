@@ -12,7 +12,13 @@ public class poong extends JPanel implements ActionListener {
     private int velocidadX = 5;//Velocidad de la bola
     private int velocidadY = 5;
     private final int tamanoBola = 30;//Tamaño de la bola
-    
+
+    //BARRAS
+    private final int barraAncho = 20;//Ancho y largp de las barras
+    private final int barraLargo = 100;
+    private int barraIzquierdaY = 600 / 2 - barraLargo / 2;//Posición inicial de las barras
+    private int barraDerechaY = 600 / 2 - barraLargo / 2;
+
     //TIMER
     private Timer timer;//Temporizador para controlar la animacion
 
@@ -51,16 +57,34 @@ public class poong extends JPanel implements ActionListener {
     protected void paintComponent(Graphics g) {//Método para dibujar los elementos
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
+        
         //BOLA
         g.setColor(Color.BLUE);//Color de la bola
         g.fillOval(x, y, tamanoBola, tamanoBola);//Dibujar la bola
         
+        //BARRAS
+        g.setColor(Color.BLUE);//Color de las barras
+        g.fillRect(10, barraIzquierdaY, barraAncho, barraLargo);//Dibujar la barra izquierda
+        g.fillRect(getWidth() - 30, barraDerechaY, barraAncho, barraLargo);//Dibujar la barra derecha
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {//Método para controlar la lógica del juego
         
-        
+        //Mover la pelota
+        x += velocidadX;
+        y += velocidadY;
+
+        //Rebote en los bordes verticales
+        if (y <= 0 || y >= getHeight() - tamanoBola) {
+            /*Si y es menor o igual a 0 
+            o mayor o igual a la altura del panel menos el tamañ de la pelota,
+            invierto la dirección*/
+            velocidadY = -velocidadY;
+
+        }
+
+        repaint();
     }
 
     
