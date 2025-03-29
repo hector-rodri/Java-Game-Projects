@@ -6,6 +6,13 @@ import java.awt.event.*;
 
 public class poong extends JPanel implements ActionListener {
     
+    //BOLA
+    private int x = 400;//Posición inicial de la bola
+    private int y = 300;
+    private int velocidadX = 5;//Velocidad de la bola
+    private int velocidadY = 5;
+    private final int tamanoBola = 30;//Tamaño de la bola
+    
     //TIMER
     private Timer timer;//Temporizador para controlar la animacion
 
@@ -44,7 +51,9 @@ public class poong extends JPanel implements ActionListener {
     protected void paintComponent(Graphics g) {//Método para dibujar los elementos
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-
+        //BOLA
+        g.setColor(Color.BLUE);//Color de la bola
+        g.fillOval(x, y, tamanoBola, tamanoBola);//Dibujar la bola
         
     }
 
