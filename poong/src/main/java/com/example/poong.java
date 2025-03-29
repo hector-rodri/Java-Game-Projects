@@ -18,7 +18,12 @@ public class poong extends JPanel implements ActionListener {
     private final int barraLargo = 100;
     private int barraIzquierdaY = 600 / 2 - barraLargo / 2;//Posición inicial de las barras
     private int barraDerechaY = 600 / 2 - barraLargo / 2;
-
+    private boolean moverBarraIzquierdaArriba;//Booleanos para controlar el movimiento de las barras
+    private boolean moverBarraIzquierdaAbajo;
+    private boolean moverBarraDerechaArriba;
+    private boolean moverBarraDerechaAbajo;
+    private final int velocidadBarra = 10;//Velocidad de las barras
+    
     //TIMER
     private Timer timer;//Temporizador para controlar la animacion
 
@@ -40,12 +45,22 @@ public class poong extends JPanel implements ActionListener {
         addKeyListener(new KeyAdapter() {//Añadir un KeyListener para controlar las barras
             @Override
             public void keyPressed(KeyEvent e) {//Cuando se clicka una tecla
-                
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_W -> moverBarraIzquierdaArriba = true;//Si se clicka la tecla la barra se mueve hacia la dirección qeu toca
+                    case KeyEvent.VK_S -> moverBarraIzquierdaAbajo = true;
+                    case KeyEvent.VK_UP -> moverBarraDerechaArriba = true;
+                    case KeyEvent.VK_DOWN -> moverBarraDerechaAbajo = true;
+                }
             }
 
             @Override
             public void keyReleased(KeyEvent e) {//Cuando se suelta la tecla clickada
-                
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_W -> moverBarraIzquierdaArriba = false;//Si se suelta la tecla la barra se para
+                    case KeyEvent.VK_S -> moverBarraIzquierdaAbajo = false;
+                    case KeyEvent.VK_UP -> moverBarraDerechaArriba = false;
+                    case KeyEvent.VK_DOWN -> moverBarraDerechaAbajo = false;
+                }
             }
         });
 
@@ -83,6 +98,24 @@ public class poong extends JPanel implements ActionListener {
             velocidadY = -velocidadY;
 
         }
+
+        //Movimiento de las palas
+        //IZQUIERDA
+        if (moverBarraIzquierdaArriba && barraIzquierdaY > 0)//Si se clicka la tecla W y la barra no llega al borde de arriba
+            barraIzquierdaY -= velocidadBarra;//La barra se mueve hacia arriba
+
+
+        if (moverBarraIzquierdaAbajo && barraIzquierdaY < getHeight() - barraLargo)//Si se clicka la tecla S y la barra no llega al borde de abajo
+            barraIzquierdaY += velocidadBarra;//La barra se mueve hacia abajo
+
+        //DERECHA
+        if (moverBarraDerechaArriba && barraDerechaY > 0)//Si se clicka la flecha arriba y la barra no llega al borde de arriba
+            barraDerechaY -= velocidadBarra;//Mover la barra hacia arriba
+        
+
+        if (moverBarraDerechaAbajo && barraDerechaY < getHeight() - barraLargo)//Si se clicka la flecha abajo y la barra no llega al borde de abajo
+            barraDerechaY += velocidadBarra;//Mover la barra hacia abajo
+
 
         repaint();
     }
