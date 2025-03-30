@@ -99,6 +99,23 @@ public class poong extends JPanel implements ActionListener {
 
         }
 
+        //Rebote con la pala izquierda
+        if (x <= 40 && velocidadX < 0 && y >= barraIzquierdaY && y <= barraIzquierdaY + barraLargo) {
+            /*Si x está cerca del borde izquierdo la pelota se mueve hacia la izquierda,
+            y la posición Y está dentro del rango de la pla izquierda,
+            invierto la dirección*/
+            velocidadX = -velocidadX;
+        }
+
+        //Rebote con la pala derecha
+        if (x + tamanoBola >= getWidth() - 40 && velocidadX > 0 && y >= barraDerechaY
+                && y <= barraDerechaY + barraLargo) {
+            /*Si la posición de la pelota está cerca del borde derecho la pelota se mueve hacia la derecha,
+            y la posición Y está dentro del rango de la paladerecha,
+            invierto la dirección*/
+            velocidadX = -velocidadX;
+        }
+
         //Movimiento de las palas
         //IZQUIERDA
         if (moverBarraIzquierdaArriba && barraIzquierdaY > 0)//Si se clicka la tecla W y la barra no llega al borde de arriba
