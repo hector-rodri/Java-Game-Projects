@@ -55,3 +55,49 @@ function generarNumeroDificil() {
     intentosMensaje.textContent = "Intentos: " + intentos;
 }
 
+function comprovarNumero() {
+    if (juegoTerminado) return;
+
+    let input = document.getElementById("inputNumero");
+    let numeroUsuario = input.value;
+
+    if (numeroUsuario === "") {
+        mensaje.textContent = "Introduce un número";
+        mensaje.style.color = "red";
+        return;
+    }
+
+    numeroUsuario = parseInt(numeroUsuario);
+
+    if (numeroUsuario < 1 || numeroUsuario > maxValor) {
+        mensaje.textContent = "Introduce un número válido";
+        mensaje.style.color = "red";
+        return;
+    }
+    intentos++;
+    intentosMensaje.textContent = "Intentos: " + intentos;
+
+    if (numeroUsuario < numero) {
+        mensaje.textContent = "Número bajo";
+        mensaje.style.color = "red";
+    } else if (numeroUsuario > numero) {
+        mensaje.textContent = "Número alto";
+        mensaje.style.color = "red";
+    } else if (numeroUsuario == numero) {
+        mensaje.textContent = "HAS ACERTADO";
+        mensaje.style.color = "green";
+        juegoTerminado = true;
+    }
+}
+
+function reiniciar() {
+    menuInicio.style.display = "block";
+    tipoJuego.style.display = "none";
+    mensaje.textContent = "";
+    document.getElementById("inputNumero").value = "";
+    numero = null;
+    maxValor = null;
+    intentos = 0;
+    intentosMensaje.textContent = "Intentos: " + intentos;
+    juegoTerminado = false;
+}
