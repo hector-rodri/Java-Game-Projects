@@ -81,6 +81,8 @@ public class poong extends JPanel implements ActionListener {
         g.setColor(Color.BLUE);//Color de las barras
         g.fillRect(10, barraIzquierdaY, barraAncho, barraLargo);//Dibujar la barra izquierda
         g.fillRect(getWidth() - 30, barraDerechaY, barraAncho, barraLargo);//Dibujar la barra derecha
+
+        
     }
 
     @Override
@@ -116,6 +118,8 @@ public class poong extends JPanel implements ActionListener {
             velocidadX = -velocidadX;
         }
 
+        
+
         //Movimiento de las palas
         //IZQUIERDA
         if (moverBarraIzquierdaArriba && barraIzquierdaY > 0)//Si se clicka la tecla W y la barra no llega al borde de arriba
@@ -137,6 +141,11 @@ public class poong extends JPanel implements ActionListener {
         repaint();
     }
 
-    
+    private void reiniciarPelota() {//Método para reiniciar la pelota
+        x = getWidth() / 2;
+        y = getHeight() / 2;
+        velocidadX = -velocidadX;//Cambiar la dirección de la pelota
+        velocidadY = -velocidadY;
+    }
 
 }
