@@ -31,6 +31,10 @@ public class poong extends JPanel implements ActionListener {
     private int puntuacionIzquierda = 0;//Puntuación de los jugadores
     private int puntuacionDerecha = 0;
 
+    //NOMBRES DE LOS JUGADORES
+    private String nombreJugadorIzquierda = "JUGADOR 1";
+    private String nombreJugadorDerecha = "JUGADOR 2";
+
     public static void main(String[] args) {//Método principal 
         JFrame ventana = new JFrame("Poong");
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//
@@ -91,6 +95,8 @@ public class poong extends JPanel implements ActionListener {
         g.setFont(new Font("Arial", Font.BOLD, 30));//Fuente de la puntuación
         g.drawString(String.valueOf(puntuacionIzquierda), getWidth() / 2 - 50, 50);//Dibujar la puntuación de los jugadores
         g.drawString(String.valueOf(puntuacionDerecha), getWidth() / 2 + 20, 50);
+        g.drawString(nombreJugadorIzquierda, 20, 50); //Nombre de los jugadores
+        g.drawString(nombreJugadorDerecha, getWidth() - 200, 50);
     }
 
     @Override
