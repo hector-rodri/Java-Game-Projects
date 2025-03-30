@@ -98,6 +98,12 @@ public class poong extends JPanel implements ActionListener {
         g.drawString(String.valueOf(puntuacionDerecha), getWidth() / 2 + 20, 50);
         g.drawString(nombreJugadorIzquierda, 20, 50); //Nombre de los jugadores
         g.drawString(nombreJugadorDerecha, getWidth() - 200, 50);
+
+        //LÍNEA DISCONTINUA EN EL CENTRO
+        g2d.setColor(Color.GRAY); //Color de la línea
+        float[] dashPattern = {10, 10}; //10 píxeles dibujados y 10 píxeles vacíos
+        g2d.setStroke(new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10, dashPattern, 0));
+        g2d.drawLine(getWidth() / 2, 0, getWidth() / 2, getHeight()); //Dibujar la línea vertical en el centro
     }
 
     @Override
