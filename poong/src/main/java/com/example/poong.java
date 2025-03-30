@@ -44,6 +44,12 @@ public class poong extends JPanel implements ActionListener {
         ventana.setResizable(false);
         ventana.add(new poong());
         ventana.setVisible(true);
+
+        try {//Cambiamos el diseño de la interfaz gráfica
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception e) {//En caso de error, se imprime un mensaje
+            System.out.println("ERROR");
+        }
         
     }
 
