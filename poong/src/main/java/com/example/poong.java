@@ -34,6 +34,7 @@ public class poong extends JPanel implements ActionListener {
     //NOMBRES DE LOS JUGADORES
     private String nombreJugadorIzquierda = "JUGADOR 1";
     private String nombreJugadorDerecha = "JUGADOR 2";
+    private String ganador = "";
 
     public static void main(String[] args) {//Método principal 
         JFrame ventana = new JFrame("Poong");
@@ -139,6 +140,28 @@ public class poong extends JPanel implements ActionListener {
         }
         if (x > getWidth()) {
             puntuacionIzquierda++;//Aumentar la puntuación del jugador de la izquierda
+            reiniciarPelota();
+        }
+
+        if (puntuacionIzquierda == 10) {//Si el jugador izquierda gana
+            
+            
+            ganador = nombreJugadorIzquierda;//Asignar el nombre del jugador izquierdo al ganador
+            JOptionPane.showMessageDialog(this, ganador + " HAS GANADO!!!", "Fin del juego", 1);//Mensaje de victoria
+        
+            //Reiniciar el juego y la puntuación
+            puntuacionIzquierda = 0;
+            puntuacionDerecha = 0;
+            reiniciarPelota();
+        }
+        
+        if (puntuacionDerecha == 10) { //Si el jugador derecho gana
+            ganador = nombreJugadorDerecha;//Asign el nombre del jugador derecho al ganador
+            JOptionPane.showMessageDialog(this, ganador + " HAS GANADO!!!", "Fin del juego", 1);//Mensaje de victoria
+        
+            //Reiniciar el juego y la puntuación
+            puntuacionIzquierda = 0;
+            puntuacionDerecha = 0;
             reiniciarPelota();
         }
 
