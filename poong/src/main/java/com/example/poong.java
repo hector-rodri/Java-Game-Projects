@@ -27,6 +27,10 @@ public class poong extends JPanel implements ActionListener {
     //TIMER
     private Timer timer;//Temporizador para controlar la animacion
 
+    //PUNTUACIÓN
+    private int puntuacionIzquierda = 0;//Puntuación de los jugadores
+    private int puntuacionDerecha = 0;
+
     public static void main(String[] args) {//Método principal 
         JFrame ventana = new JFrame("Poong");
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//
@@ -82,7 +86,11 @@ public class poong extends JPanel implements ActionListener {
         g.fillRect(10, barraIzquierdaY, barraAncho, barraLargo);//Dibujar la barra izquierda
         g.fillRect(getWidth() - 30, barraDerechaY, barraAncho, barraLargo);//Dibujar la barra derecha
 
-        
+        //PUNTUACIÓN
+        g.setColor(Color.BLACK);//Color de la puntuación
+        g.setFont(new Font("Arial", Font.BOLD, 30));//Fuente de la puntuación
+        g.drawString(String.valueOf(puntuacionIzquierda), getWidth() / 2 - 50, 50);//Dibujar la puntuación de los jugadores
+        g.drawString(String.valueOf(puntuacionDerecha), getWidth() / 2 + 20, 50);
     }
 
     @Override
@@ -118,7 +126,15 @@ public class poong extends JPanel implements ActionListener {
             velocidadX = -velocidadX;
         }
 
-        
+        //Si la pelota sale por los lados horizontales, sumar punto y reiniciar
+        if (x < 0) {
+            puntuacionDerecha++;//Aumentar la puntuación del jugador de la derecha
+            reiniciarPelota();
+        }
+        if (x > getWidth()) {
+            puntuacionIzquierda++;//Aumentar la puntuación del jugador de la izquierda
+            reiniciarPelota();
+        }
 
         //Movimiento de las palas
         //IZQUIERDA
@@ -146,6 +162,6 @@ public class poong extends JPanel implements ActionListener {
         y = getHeight() / 2;
         velocidadX = -velocidadX;//Cambiar la dirección de la pelota
         velocidadY = -velocidadY;
-    }
+    }   
 
 }
