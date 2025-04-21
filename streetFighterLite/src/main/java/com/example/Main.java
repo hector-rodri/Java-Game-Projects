@@ -70,6 +70,12 @@ public class Main extends JFrame {
         panelPrincipal.setLayout(null);
         setResizable(false);
 
+        //Logo del juego
+        JLabel logoLabel = new JLabel("");
+        logoLabel.setIcon(new ImageIcon(getClass().getResource("logo.png")));
+        logoLabel.setBounds(30, 20, 300, 200);
+        panelPrincipal.add(logoLabel);
+
         //Barra de progreso
         progressBar.setBackground(new Color(240, 240, 240));
         progressBar.setForeground(new Color(255, 216, 56));
