@@ -11,6 +11,7 @@ Este repositorio contiene una colección de juegos en varios lenguajes de progra
 ## [Adivina el Número](./adivina) (HTML, CSS, JavaScript) 🔢 
 
 **Adivina el Número** es un juego en el que el jugador debe adivinar un número aleatorio dentro de un rango determinado
+
 ![StreetFighterLite](./images/adivina.png)  
 
 ## [Street Fighter Lite](./streetFighterLite) (Java Swing) 🕹️
