@@ -16,7 +16,7 @@ public class juego extends JPanel {
     private JButton exitButton;
     private String player1Name = "RYU";
     private String player2Name = "KEN";
-    private JFrame gameFrame;  // Para controlar el JFrame
+    private JFrame gameFrame; // Para controlar el JFrame
 
     public void setPlayerNames(String player1, String player2) {
         this.player1Name = player1;
@@ -28,7 +28,7 @@ public class juego extends JPanel {
         timer.start();
     }
 
-    private void bindEvents() {//Asignar eventos de teclado a los personajes
+    private void bindEvents() {// Asignar eventos de teclado a los personajes
         this.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -40,7 +40,8 @@ public class juego extends JPanel {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                if (gameOver) return; // Evitar eventos si el juego terminó
+                if (gameOver)
+                    return; // Evitar eventos si el juego terminó
 
                 switch (e.getKeyCode()) {
                     case KeyEvent.VK_A -> RYU1.setSpeed(-10);
@@ -83,7 +84,7 @@ public class juego extends JPanel {
         });
     }
 
-    //Método para verificar si hay colisión
+    // Método para verificar si hay colisión
     private boolean isCollide(sprite attacker, sprite defender) {
         int xDistance = Math.abs(attacker.getX() - defender.getX());
         int yDistance = Math.abs(attacker.getY() - defender.getY());
@@ -91,10 +92,11 @@ public class juego extends JPanel {
                 && yDistance <= Math.max(attacker.getH(), defender.getH()) - 10;
     }
 
-    //Método para verificar si hay ganador
+    // Método para verificar si hay ganador
     private void checkWinner() {
-        if (gameOver) return; // Evitar múltiples llamadas si el juego ya terminó
-    
+        if (gameOver)
+            return; // Evitar múltiples llamadas si el juego ya terminó
+
         if (RYU1.getRyucounter() <= 0 && KEN1.getKencounter() <= 0) {
             gameOver = true;
             winner = "DRAW"; // Declarar empate si ambos llegan a 0
@@ -107,9 +109,9 @@ public class juego extends JPanel {
         }
     }
 
-    //Constructor del juego
+    // Constructor del juego
     public juego(JFrame frame) {
-        this.gameFrame = frame;  // Asignar el JFrame principal
+        this.gameFrame = frame; // Asignar el JFrame principal
         setSize(800, 600);
         RYU1 = new ryu(100, 100);
         KEN1 = new ken(600, 100);
@@ -118,12 +120,10 @@ public class juego extends JPanel {
         bindEvents();
         gameLoop();
         setLayout(null);
-        initReplayButton();
-        initHomeButton();
-        initExitButton();
+        initButtons();
     }
 
-    //Método para dibujar el juego
+    // Método para dibujar el juego
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -142,41 +142,42 @@ public class juego extends JPanel {
         }
     }
 
-    //Método para inicializar los botones de reinicio, inicio y salir
-    private void initReplayButton() {
-        replayButton = new JButton("RESTART GAME");
-        replayButton.setBounds(300, 250, 200, 60);
+    // Método para inicializar los botones de reinicio, inicio y salir en línea
+    // abajo
+    private void initButtons() {
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        buttonPanel.setBounds(200, 400, 400, 60);
+        buttonPanel.setOpaque(false);
+
+        replayButton = new JButton("RESTART");
         replayButton.setForeground(Color.WHITE);
-        replayButton.setBackground(new Color(44, 150, 57));
+        replayButton.setBackground(new Color(56, 112, 255));
         replayButton.setFont(new Font("Verdana", Font.BOLD, 20));
         replayButton.setVisible(false);
         replayButton.addActionListener(e -> resetGame());
-        add(replayButton);
-    }
+        buttonPanel.add(replayButton);
 
-    private void initHomeButton() {
         homeButton = new JButton("HOME");
-        homeButton.setBounds(300, 320, 200, 60);
         homeButton.setForeground(Color.WHITE);
-        homeButton.setBackground(new Color(44, 150, 57));
+        homeButton.setBackground(new Color(56, 112, 255));
         homeButton.setFont(new Font("Verdana", Font.BOLD, 20));
         homeButton.setVisible(false);
         homeButton.addActionListener(e -> goToHomeScreen());
-        add(homeButton);
-    }
+        buttonPanel.add(homeButton);
 
-    private void initExitButton() {
         exitButton = new JButton("EXIT");
-        exitButton.setBounds(300, 390, 200, 60);
         exitButton.setForeground(Color.WHITE);
-        exitButton.setBackground(new Color(150, 44, 44));
+        exitButton.setBackground(new Color(255, 56, 56));
         exitButton.setFont(new Font("Verdana", Font.BOLD, 20));
         exitButton.setVisible(false);
-        exitButton.addActionListener(e -> System.exit(0));  // Cerrar aplicación
-        add(exitButton);
+        exitButton.addActionListener(e -> System.exit(0));
+        buttonPanel.add(exitButton);
+
+        add(buttonPanel);
     }
 
-    //Método para reiniciar el juego
+    // Método para reiniciar el juego
     private void resetGame() {
         gameOver = false;
         winner = "";
@@ -191,16 +192,17 @@ public class juego extends JPanel {
         repaint();
     }
 
-    //Método para volver a la pantalla de inicio
+    // Método para volver a la pantalla de inicio
     private void goToHomeScreen() {
-        // Aquí puedes hacer que vuelva a la pantalla de inicio (gameScreen)
-        gameFrame.getContentPane().removeAll();  // Limpiar la pantalla actual
-        gameFrame.add(new juego(gameFrame));  // Agregar la pantalla de inicio
-        gameFrame.revalidate();  // Revalidar cambios
-        gameFrame.repaint();  // Repintar
+        resetGame();
+        gameFrame.dispose();
+        Main mainFrame = new Main();
+        mainFrame.setVisible(true);
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setResizable(false);
     }
 
-    //Método para dibujar la interfaz de usuario
+    // Método para dibujar la interfaz de usuario
     private void drawHUD(Graphics g) {
         g.setColor(new Color(56, 255, 112));
         g.fillRect(40, 40, Math.max(0, RYU1.getRyucounter()), 40); // Evitar barra negativa
@@ -211,10 +213,10 @@ public class juego extends JPanel {
         g.drawString(player2Name, 450, 72);
     }
 
-    //Método para dibujar el mensaje de fin de juego
+    // Método para dibujar el mensaje de fin de juego
     private void drawGameOver(Graphics g) {
-        g.setColor(new Color(44, 150, 57));
-        g.setFont(new Font("Trebuchet Ms", Font.BOLD, 70));
-        g.drawString(winner, getWidth() / 2 - 220, getHeight() / 2);
+        g.setColor(new Color(56, 112, 255));
+        g.setFont(new Font("Trebuchet Ms", Font.BOLD, 100));
+        g.drawString(winner, 100, 250);
     }
 }
