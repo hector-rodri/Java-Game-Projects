@@ -4,7 +4,7 @@ import java.awt.Graphics;
 
 public class pantalla extends sprite { //Clase utilizada para manejar el fondo del juego
 	public pantalla() { 
-		super(); //Llama al constructor de la clase padre
+		loadImage(this);
 		this.x = 0;
 		this.y = 0;
 		this.h = FRAME_HEIGHT; 
