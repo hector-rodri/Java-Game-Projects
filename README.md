@@ -14,7 +14,7 @@ Este repositorio contiene una colección de juegos en varios lenguajes de progra
 
 ![StreetFighterLite](./images/adivina.png)  
 
-## [Street Fighter Lite](./streetFighterLite) (Java Swing) 🕹️
+## [Street Fighter Lite](./streetFighterLite) (Java Swing) 🥊
 
 **StreetFighterLite** es una versión simplificada del clásico juego de lucha **Street Fighter**, desarrollada en **Java** usando **Swing** y **Graphics**
 
