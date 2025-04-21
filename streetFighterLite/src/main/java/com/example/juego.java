@@ -28,7 +28,7 @@ public class juego extends JPanel {
         timer.start();
     }
 
-    private void bindEvents() {
+    private void bindEvents() {//Asignar eventos de teclado a los personajes
         this.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -83,6 +83,7 @@ public class juego extends JPanel {
         });
     }
 
+    //Método para verificar si hay colisión
     private boolean isCollide(sprite attacker, sprite defender) {
         int xDistance = Math.abs(attacker.getX() - defender.getX());
         int yDistance = Math.abs(attacker.getY() - defender.getY());
@@ -90,6 +91,7 @@ public class juego extends JPanel {
                 && yDistance <= Math.max(attacker.getH(), defender.getH()) - 10;
     }
 
+    //Método para verificar si hay ganador
     private void checkWinner() {
         if (gameOver) return; // Evitar múltiples llamadas si el juego ya terminó
     
@@ -105,6 +107,7 @@ public class juego extends JPanel {
         }
     }
 
+    //Constructor del juego
     public juego(JFrame frame) {
         this.gameFrame = frame;  // Asignar el JFrame principal
         setSize(800, 600);
@@ -120,6 +123,7 @@ public class juego extends JPanel {
         initExitButton();
     }
 
+    //Método para dibujar el juego
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -138,6 +142,7 @@ public class juego extends JPanel {
         }
     }
 
+    //Método para inicializar los botones de reinicio, inicio y salir
     private void initReplayButton() {
         replayButton = new JButton("RESTART GAME");
         replayButton.setBounds(300, 250, 200, 60);
@@ -171,6 +176,7 @@ public class juego extends JPanel {
         add(exitButton);
     }
 
+    //Método para reiniciar el juego
     private void resetGame() {
         gameOver = false;
         winner = "";
@@ -185,6 +191,7 @@ public class juego extends JPanel {
         repaint();
     }
 
+    //Método para volver a la pantalla de inicio
     private void goToHomeScreen() {
         // Aquí puedes hacer que vuelva a la pantalla de inicio (gameScreen)
         gameFrame.getContentPane().removeAll();  // Limpiar la pantalla actual
@@ -193,6 +200,7 @@ public class juego extends JPanel {
         gameFrame.repaint();  // Repintar
     }
 
+    //Método para dibujar la interfaz de usuario
     private void drawHUD(Graphics g) {
         g.setColor(new Color(56, 255, 112));
         g.fillRect(40, 40, Math.max(0, RYU1.getRyucounter()), 40); // Evitar barra negativa
@@ -203,6 +211,7 @@ public class juego extends JPanel {
         g.drawString(player2Name, 450, 72);
     }
 
+    //Método para dibujar el mensaje de fin de juego
     private void drawGameOver(Graphics g) {
         g.setColor(new Color(44, 150, 57));
         g.setFont(new Font("Trebuchet Ms", Font.BOLD, 70));

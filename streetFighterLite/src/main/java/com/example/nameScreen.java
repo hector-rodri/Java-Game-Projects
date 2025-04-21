@@ -88,7 +88,7 @@ public class nameScreen extends JFrame {//Define la clase que hereda de JFrame
             return;//Muestra un mensaje de error
         }
 
-        juego juego = new juego(this);//Crea una ventana de juego y pasa la referencia del JFrame actual
+        juego juego = new juego(this);//Crea una ventana de juego
         juego.setPlayerNames(jugadorNombre1.toUpperCase(), jugadorNombre2.toUpperCase());// Establece los nombres introducidos
         JFrame game = new JFrame();
         game.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

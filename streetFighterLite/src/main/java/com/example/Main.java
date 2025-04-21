@@ -7,11 +7,12 @@ import java.awt.event.*;
 
 public class Main extends JFrame {
 
-    private JPanel contentPane;
+    private JPanel panelPrincipal;
     Timer timer;
     int counter = 1;
+    JProgressBar progressBar = new JProgressBar();
 
-    private void animation() {
+    private void animation() {//Animación para cargar el juego
         timer = new Timer(10, (e) -> {
             progressBar.setValue(counter);
             counter++;
@@ -27,7 +28,7 @@ public class Main extends JFrame {
         timer.start();
     }
 
-    private void help() {
+    private void help() {//Método para abrir la pantalla de ayuda
         this.setVisible(false);
         this.dispose();
         helpScreen help = new helpScreen();
@@ -35,7 +36,7 @@ public class Main extends JFrame {
         help.setLocationRelativeTo(null);
     }
 
-    private void customizePlayer() {
+    private void customizePlayer() {//Método para abrir la pantalla de personalización
         this.setVisible(false);
         this.dispose();
         nameScreen customizeScreen = new nameScreen();
@@ -43,7 +44,7 @@ public class Main extends JFrame {
         customizeScreen.setLocationRelativeTo(null);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {//Método main para ejecutar el programa
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -57,20 +58,19 @@ public class Main extends JFrame {
         });
     }
 
-    JProgressBar progressBar = new JProgressBar();
-
     public Main() {
         setTitle("STREET FIGHTER LITE");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 370, 500);
 
-        contentPane = new JPanel();
-        contentPane.setBackground(new Color(255, 56, 56));
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(contentPane);
-        contentPane.setLayout(null);
+        panelPrincipal = new JPanel();
+        panelPrincipal.setBackground(new Color(255, 56, 56));
+        panelPrincipal.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(panelPrincipal);
+        panelPrincipal.setLayout(null);
         setResizable(false);
 
+        //Barra de progreso
         progressBar.setBackground(new Color(240, 240, 240));
         progressBar.setForeground(new Color(255, 216, 56));
         progressBar.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -78,8 +78,9 @@ public class Main extends JFrame {
         progressBar.setStringPainted(true);
         progressBar.setBounds(35, 200, 278, 28);
         progressBar.setVisible(false);
-        contentPane.add(progressBar);
+        panelPrincipal.add(progressBar);
 
+        //Botón de inicio
         JButton btnStartGame = new JButton("START");
         btnStartGame.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -92,8 +93,9 @@ public class Main extends JFrame {
         btnStartGame.setForeground(new Color(240, 240, 240));
         btnStartGame.setFont(new Font("Tahoma", Font.BOLD, 28));
         btnStartGame.setBounds(53, 237, 241, 55);
-        contentPane.add(btnStartGame);
+        panelPrincipal.add(btnStartGame);
 
+        //Botón de personalización
         JButton btnCustomize = new JButton("CUSTOMIZE");
         btnCustomize.setFocusable(false);
         btnCustomize.addActionListener(e -> customizePlayer());
@@ -101,19 +103,20 @@ public class Main extends JFrame {
         btnCustomize.setBackground(new Color(255, 216, 56));
         btnCustomize.setFont(new Font("Tahoma", Font.BOLD, 28));
         btnCustomize.setBounds(53, 313, 241, 55);
-        contentPane.add(btnCustomize);
+        panelPrincipal.add(btnCustomize);
 
-        JButton btnNewButton = new JButton("HELP");
-        btnNewButton.addActionListener(new ActionListener() {
+        //Botón de ayuda
+        JButton btnHelp = new JButton("HELP");
+        btnHelp.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 help();
             }
         });
-        btnNewButton.setFocusable(false);
-        btnNewButton.setBackground(new Color(255, 216, 56));
-        btnNewButton.setForeground(new Color(240, 240, 240));
-        btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 28));
-        btnNewButton.setBounds(53, 390, 241, 55);
-        contentPane.add(btnNewButton);
+        btnHelp.setFocusable(false);
+        btnHelp.setBackground(new Color(255, 216, 56));
+        btnHelp.setForeground(new Color(240, 240, 240));
+        btnHelp.setFont(new Font("Tahoma", Font.BOLD, 28));
+        btnHelp.setBounds(53, 390, 241, 55);
+        panelPrincipal.add(btnHelp);
     }
 }
