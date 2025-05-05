@@ -37,6 +37,12 @@ public class Main {
             } else {
                 System.out.println("Perdiste :(");
             }
+            System.out.print("¿Quieres jugar otra vez? (s/n): ");
+            String respuesta = sc.nextLine().toLowerCase();
+            if (!respuesta.equals("s")) {
+                jugar = false;
+                System.out.println("Gracias por jugar");
+            }
         }
         sc.close();
     }
