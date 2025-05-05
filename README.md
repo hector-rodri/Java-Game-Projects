@@ -20,3 +20,9 @@ Este repositorio contiene una colección de juegos en varios lenguajes de progra
 
 ![StreetFighterLite](./images/streetFighterLite.png)  
 
+## [El Corredor de Kessel](./esquivaAsteroides) (Java Swing) 🚀
+
+**El Corredor de Kessel** es un juego arcade en el que controlas una nave espacial que viaja a toda velocidad, tu objetivo es esquivar el mayor número de asteroides para conseguir la máxima puntuación
+
+![esquivaAsteroides](./images/asteroide.png)  
+
