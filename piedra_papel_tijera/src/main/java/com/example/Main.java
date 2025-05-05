@@ -41,7 +41,9 @@ public class Main {
             String respuesta = sc.nextLine().toLowerCase();
             if (!respuesta.equals("s")) {
                 jugar = false;
-                System.out.println("Gracias por jugar");
+                System.out.println("--------------------------------------------------");
+                System.out.println("Gracias por jugar "+nombre+ ". Juego desarrollado por Héctor ©");
+                System.out.println("--------------------------------------------------");
             }
         }
         sc.close();
