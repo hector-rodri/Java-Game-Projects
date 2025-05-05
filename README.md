@@ -26,7 +26,7 @@ Este repositorio contiene una colección de juegos en varios lenguajes de progra
 
 ![esquivaAsteroides](./images/asteroide.png)  
 
-## [Piedra, papel o tijera](./piedra_pape_tijera) (Java ) 🪨🧻✂️
+## [Piedra, papel o tijera](./piedra_papej_tijera) (Java ) 🪨🧻✂️
 
 **Piedra, Papel o Tijera** es un juego de consola desarrollado en Java donde el jugador compite contra el ordenador.  
 El objetivo es elegir una opción entre piedra, papel o tijera y vencer a la elección aleatoria del ordenador, siguiendo las reglas clásicas del juego.
