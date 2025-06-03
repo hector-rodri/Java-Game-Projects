@@ -44,4 +44,9 @@ public class tablero {
             System.out.println("");
         }
     }
+
+    public static void main(String[] args) {
+        tablero miTablero = new tablero(5, 5, 5);
+        miTablero.imprimirTablero();
+    }
 }
