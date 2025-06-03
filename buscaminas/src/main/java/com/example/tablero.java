@@ -20,7 +20,6 @@ public class tablero {
             for (int j = 0; j < numeroColumnas; j++) {
                 casillas[i][j] = new casilla(i, j);
             }
-            generarMinas();
         }
     }
 
@@ -37,4 +36,12 @@ public class tablero {
         }
     }
 
+    private void imprimirTablero() {
+        for (int i = 0; i < casillas.length; i++) {
+            for (int j = 0; j < casillas[i].length; j++) {
+                System.out.print(casillas[i][j].isMina() ? "*" : "0");
+            }
+            System.out.println("");
+        }
+    }
 }
