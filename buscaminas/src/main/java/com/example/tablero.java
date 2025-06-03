@@ -11,6 +11,7 @@ public class tablero {
         this.numeroFilas = numeroFilas;
         this.numeroColumnas = numeroColumnas;
         this.numeroMinas = numeroMinas;
+        inicializarCasillas();
     }
 
     public void inicializarCasillas() {
@@ -19,11 +20,21 @@ public class tablero {
             for (int j = 0; j < numeroColumnas; j++) {
                 casillas[i][j] = new casilla(i, j);
             }
+            generarMinas();
         }
     }
 
     public void generarMinas(){
-        
+        int minasgeneradas = 0;
+        while(minasgeneradas != numeroMinas) {
+            int fila = (int) (Math.random() * numeroFilas);
+            int columna = (int) (Math.random() * numeroColumnas);
+            if (!casillas[fila][columna].isMina()) {
+                casillas[fila][columna].setMina(true);
+                minasgeneradas++;
+
+            }
+        }
     }
 
 }
