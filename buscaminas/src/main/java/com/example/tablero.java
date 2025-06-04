@@ -1,5 +1,8 @@
 package com.example;
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedList;
 public class tablero {
     
     private casilla[][] casillas;
@@ -44,6 +47,62 @@ public class tablero {
             System.out.println("");
         }
     }
+
+    private void actualizarNumerosMinasAlrededor() {
+        for (int i = 0; i < numeroFilas; i++) {
+            for (int j = 0; j < numeroColumnas; j++) {
+                if (casillas[i][j].isMina()) {
+                    
+                }
+            }
+        }
+    }
+
+    private List<casilla> obtenerCasillasAlrededor(int posFila, int posColumna) {
+        List<casilla> listaCasillas = new LinkedList<>();
+        for (int i = 0; i < 8; i++) {
+            int tmpPosFila = posFila;
+            int tmpPosColumna = posColumna;
+            switch (i) {
+                case 0:
+                    tmpPosFila--;
+                    break; 
+                case 1:
+                    tmpPosFila--;
+                    tmpPosColumna++;
+                    break;
+                case 2:
+                    tmpPosColumna++;
+                    break; 
+                case 3:
+                    tmpPosColumna++;
+                    tmpPosFila++;
+                    break; 
+                case 4:
+                    tmpPosFila++;
+                    break; 
+                case 5:
+                    tmpPosFila++;
+                    tmpPosColumna--;
+                    break; 
+                case 6:
+                    tmpPosColumna--;
+                    break; 
+                case 7:
+                    tmpPosFila--;
+                    tmpPosColumna--;
+                    break; 
+            }
+
+            if (tmpPosFila >= 0 && tmpPosFila < this.casillas.length
+                    && tmpPosColumna >= 0 && tmpPosColumna < this.casillas[0].length) {
+                listaCasillas.add(this.casillas[tmpPosFila][tmpPosColumna]);
+            }
+
+        }
+        return listaCasillas;
+    }
+
 
     public static void main(String[] args) {
         tablero miTablero = new tablero(5, 5, 5);
