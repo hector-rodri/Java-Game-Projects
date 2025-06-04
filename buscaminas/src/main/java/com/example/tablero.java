@@ -1,8 +1,7 @@
 package com.example;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.*;
+
 public class tablero {
     
     private casilla[][] casillas;
@@ -24,6 +23,7 @@ public class tablero {
                 casillas[i][j] = new casilla(i, j);
             }
         }
+        generarMinas();
     }
 
     public void generarMinas(){
@@ -37,6 +37,7 @@ public class tablero {
 
             }
         }
+        actualizarNumerosMinasAlrededor();
     }
 
     private void imprimirTablero() {
@@ -48,11 +49,22 @@ public class tablero {
         }
     }
 
+    private void imprimirPistas() {
+        for (int i = 0; i < casillas.length; i++) {
+            for (int j = 0; j < casillas[i].length; j++) {
+                System.out.print(casillas[i][j].getNumeroMinasAlrededor());
+            }
+            System.out.println("");
+        }
+    }
+
+
     private void actualizarNumerosMinasAlrededor() {
         for (int i = 0; i < numeroFilas; i++) {
             for (int j = 0; j < numeroColumnas; j++) {
                 if (casillas[i][j].isMina()) {
-                    
+                    List<casilla> casillasAlrededor = obtenerCasillasAlrededor(i, j);
+                    casillasAlrededor.forEach((c) -> c.incrementarNumeroMinasAlrededor());
                 }
             }
         }
@@ -107,5 +119,7 @@ public class tablero {
     public static void main(String[] args) {
         tablero miTablero = new tablero(5, 5, 5);
         miTablero.imprimirTablero();
+        System.out.println("Pistas:");
+        miTablero.imprimirPistas();
     }
 }

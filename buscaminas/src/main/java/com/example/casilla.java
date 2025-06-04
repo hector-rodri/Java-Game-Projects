@@ -54,4 +54,7 @@ public class casilla {
         this.numeroMinasAlrededor = numeroMinasAlrededor;
     }
     
+    public void incrementarNumeroMinasAlrededor() {
+        this.numeroMinasAlrededor++;
+    }
 }
