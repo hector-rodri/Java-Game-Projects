@@ -10,6 +10,9 @@ public class blackjack {
         jugador crupier = new jugador();
 
         while (true) {
+            jugador.resetMano();
+            crupier.resetMano();
+            baraja = new baraja();
             System.out.println("Bienvenido al Blackjack!");
             System.out.print("Quieres ver las normas del juego? (s/n): ");
             String normas = sc.nextLine().toLowerCase();
@@ -23,7 +26,7 @@ public class blackjack {
                 System.out.println("- El crupier debe pedir carta hasta llegar a 17 puntos o más");
                 System.out.println("- Ganas si tienes más puntos que el crupier sin pasarte de 21");
                 System.out.println("- ¡Buena suerte!");
-                System.out.println();
+                continuar(sc);
             }
 
             jugador.nuevaCarta(baraja.repartir());
@@ -69,10 +72,15 @@ public class blackjack {
             System.out.print("Quieres jugar otra vez? (s/n): ");
             String jugarOtraVez = sc.nextLine().toLowerCase();
             if (!jugarOtraVez.equals("s")) {
-                System.out.println("Gracias por jugar al Blackjack!");
+                System.out.println("Gracias por jugar!");
                 break;
             }
         }
+        sc.close();
+    }
 
+    public static void continuar(Scanner sc) {
+        System.out.println("\nPulsa Enter para continuar...");
+        sc.nextLine();
     }
 }

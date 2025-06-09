@@ -47,4 +47,8 @@ public class jugador {
     public carta getCarta(int indice) {
         return mano.get(indice);
     }
+
+    public void resetMano() {
+        mano.clear();
+    }
 }

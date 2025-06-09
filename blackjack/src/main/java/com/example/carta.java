@@ -23,7 +23,14 @@ public class carta {
         return valor + " de " + tipo;
     }
 
+    
     public String getValorString() {
-        return valor;
+        if (valor.equals("A")) {
+            return "11";
+        } else if (valor.equals("K") || valor.equals("Q") || valor.equals("J")) {
+            return "10";
+        } else {
+            return valor;
+        }
     }
 }
