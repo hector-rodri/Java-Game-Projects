@@ -50,5 +50,20 @@ public class blackjack {
             }
         }
 
+        while (crupier.getPuntuacion() < 17) {
+            crupier.nuevaCarta(baraja.repartir());
+        }
+        System.out.println("Mano del crupier:");
+        crupier.infoMano();
+
+        if (crupier.eliminado() || jugador.getPuntuacion() > crupier.getPuntuacion()) {
+            System.out.println("Felicidades! Has ganado");
+        } else if (jugador.getPuntuacion() < crupier.getPuntuacion()) {
+            System.out.println("El crupier ha ganado");
+        } else {
+            System.out.println("Empate!");
+        }
+
+        sc.close();
     }
 }
