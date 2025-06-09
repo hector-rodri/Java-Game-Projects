@@ -33,6 +33,22 @@ public class blackjack {
         System.out.println("Mano del Jugador:");
         jugador.infoMano();
         System.out.println("Carta visible del crupier: " + crupier.getCarta(0).infoCarta());
-       
+         
+        while (true) {
+            System.out.print("Quieres otra carta? (s/n): ");
+            String respuesta = sc.nextLine().toLowerCase();
+            if (respuesta.equals("s")) {
+                jugador.nuevaCarta(baraja.repartir());
+                jugador.infoMano();
+                if (jugador.eliminado()) {
+                    System.out.println("Te has pasado! Has perdido");
+                    sc.close();
+                    return;
+                }
+            } else {
+                break;
+            }
+        }
+
     }
 }
