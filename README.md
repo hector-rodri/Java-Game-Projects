@@ -14,11 +14,11 @@ Este repositorio contiene una colección de juegos en java, usando diferentes li
 
 ![StreetFighterLite](./images/streetFighterLite.png)  
 
-## [El Corredor de Kessel](./esquivaAsteroides) 🚀
+## [Blackjack](./blackjack) ♠️♥️♣️♦️
 
-**El Corredor de Kessel** es un juego arcade en el que controlas una nave espacial que viaja a toda velocidad, tu objetivo es esquivar el mayor número de asteroides para conseguir la máxima puntuación
+**Blackjack** es una versión del juego de cartas, desarrollada en **Java** usando progrmación orientada a objetos y audio
 
-![esquivaAsteroides](./images/asteroide.png)  
+![Blackjack](./images/blackjack.png)  
 
 ## [Piedra, papel o tijera](./piedra_papel_tijera) 🪨🧻✂️
 
@@ -27,3 +27,8 @@ El objetivo es elegir una opción entre piedra, papel o tijera y vencer a la ele
 
 ![esquivaAsteroides](./images/rockpaperscissors.png)  
 
+## [El Corredor de Kessel](./esquivaAsteroides) 🚀
+
+**El Corredor de Kessel** es un juego arcade en el que controlas una nave espacial que viaja a toda velocidad, tu objetivo es esquivar el mayor número de asteroides para conseguir la máxima puntuación
+
+![esquivaAsteroides](./images/asteroide.png)  
