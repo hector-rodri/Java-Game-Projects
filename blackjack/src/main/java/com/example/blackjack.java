@@ -4,6 +4,7 @@ import java.util.*;
 
 public class blackjack {
     public static void main(String[] args) {
+        musica.reproducir("blackjack\\src\\main\\java\\com\\example\\“Luigi’s Casino” Theme Jazz Cover Super Mario 64 DS.wav");
         Scanner sc = new Scanner(System.in);
         baraja baraja = new baraja();
         jugador jugador = new jugador();
