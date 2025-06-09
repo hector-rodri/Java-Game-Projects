@@ -48,8 +48,15 @@ public class blackjack {
                     jugador.infoMano();
                     if (jugador.eliminado()) {
                         System.out.println("Te has pasado! Has perdido");
-                        sc.close();
-                        return;
+                        System.out.print("Quieres jugar otra vez? (s/n): ");
+                        String jugarOtraVez = sc.nextLine().toLowerCase();
+                        if (!jugarOtraVez.equals("s")) {
+                            System.out.println("Gracias por jugar!");
+                            sc.close();
+                            return;
+                        } else {
+                            break;
+                        }
                     }
                 } else {
                     break;
