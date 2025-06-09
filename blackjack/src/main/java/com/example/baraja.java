@@ -6,7 +6,7 @@ public class baraja {
     private ArrayList<carta> cartas;
 
     public baraja(){
-        String[] tipos = {"♠", "♥", "♦", "♣"};
+        String[] tipos = {"espadas", "corazones", "diamantes", "tréboles"};
         String[] valores = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
         cartas = new ArrayList<>();
         

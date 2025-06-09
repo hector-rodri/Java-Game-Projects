@@ -22,4 +22,8 @@ public class carta {
     public String infoCarta() {
         return valor + " de " + tipo;
     }
+
+    public String getValorString() {
+        return valor;
+    }
 }

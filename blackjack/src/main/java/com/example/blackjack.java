@@ -1,0 +1,38 @@
+package com.example;
+
+import java.util.*;
+
+public class blackjack {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        baraja baraja = new baraja();
+        jugador jugador = new jugador();
+        jugador crupier = new jugador();
+
+        System.out.println("Bienvenido al Blackjack!");
+        System.out.print("Quieres ver las normas del juego? (s/n): ");
+        String normas = sc.nextLine().toLowerCase();
+        if (normas.equals("s")) {
+            System.out.println("Normas del Blackjack:");
+            System.out.println("- El objetivo es acercarse lo más posible a 21 puntos sin pasarse");
+            System.out.println("- Las cartas del 2 al 10 valen su valor");
+            System.out.println("- Las figuras (J, Q, K) valen 10 puntos");
+            System.out.println("- El As puede valer 1 o 11 puntos, según convenga");
+            System.out.println("- Si te pasas de 21 puntos, pierdes automáticamente");
+            System.out.println("- El crupier debe pedir carta hasta llegar a 17 puntos o más");
+            System.out.println("- Ganas si tienes más puntos que el crupier sin pasarte de 21");
+            System.out.println("- ¡Buena suerte!");
+            System.out.println();
+        }
+
+        jugador.nuevaCarta(baraja.repartir());
+        jugador.nuevaCarta(baraja.repartir());
+        crupier.nuevaCarta(baraja.repartir());
+        crupier.nuevaCarta(baraja.repartir());
+
+        System.out.println("Mano del Jugador:");
+        jugador.infoMano();
+        System.out.println("Carta visible del crupier: " + crupier.getCarta(0).infoCarta());
+       
+    }
+}

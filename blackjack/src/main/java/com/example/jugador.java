@@ -5,11 +5,11 @@ import java.util.*;
 public class jugador {
     private ArrayList<carta> mano;
 
-    public jugador(){
+    public jugador() {
         mano = new ArrayList<>();
     }
 
-    public void nuevaCarta(carta carta){
+    public void nuevaCarta(carta carta) {
         mano.add(carta);
     }
 
@@ -21,7 +21,7 @@ public class jugador {
             int valor = carta.getValor();
             totalPuntos += valor;
             if (valor == 11) {
-            ases++;
+                ases++;
             }
         }
 
@@ -42,5 +42,9 @@ public class jugador {
 
     public boolean eliminado() {
         return getPuntuacion() > 21;
+    }
+
+    public carta getCarta(int indice) {
+        return mano.get(indice);
     }
 }
