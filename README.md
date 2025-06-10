@@ -16,7 +16,7 @@ Este repositorio contiene una colección de juegos en java, usando diferentes li
 
 ## [Blackjack](./blackjack) ♠️♥️♣️♦️
 
-**Blackjack** es una versión del juego de cartas, desarrollada en **Java** usando progrmación orientada a objetos y audio
+**Blackjack** es una versión del juego de cartas, desarrollada en **Java** por consola, usando programación orientada a objetos y audio
 
 ![Blackjack](./images/blackjack.png)  
 
