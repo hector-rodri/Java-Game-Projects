@@ -20,6 +20,15 @@ Este repositorio contiene una colección de juegos en java, usando diferentes li
 
 ![Blackjack](./images/blackjack.png)  
 
+## [Buscaminas Lite](./buscaminas) 💣
+
+**Buscaminas Lite** es una versión simplificada del clásico **Buscaminas**, desarrollada en **Java** con **Swing**  
+El objetivo es descubrir todas las casillas libres del tablero evitando detonar las minas ocultas.  
+Actualmente se encuentra en desarrollo, pero se pueden jugar partidas básicas.
+
+![BuscaminasLite](./images/buscaminas.png)  
+
+
 ## [Piedra, papel o tijera](./piedra_papel_tijera) 🪨🧻✂️
 
 **Piedra, Papel o Tijera** es un juego de consola desarrollado en Java donde el jugador compite contra el ordenador.  
