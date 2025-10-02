@@ -16,6 +16,10 @@ public class tablero {
         inicializarCasillas();
     }
 
+    public casilla[][] getCasillas() {
+        return casillas;
+    }
+
     public void inicializarCasillas() {
         casillas = new casilla[numeroFilas][numeroColumnas];
         for (int i = 0; i < numeroFilas; i++) {
